@@ -1,0 +1,14 @@
+PRINT 'Data Stok SEBELUM Bencana:';
+SELECT SKU, NamaProduk, Stok FROM Produk;
+
+BEGIN TRANSACTION;
+
+UPDATE Produk
+SET Stok = 0;
+
+PRINT 'Melakukan ROLLBACK...';
+ROLLBACK TRANSACTION;
+
+
+PRINT 'Data Stok SETELAH di-ROLLBACK (AMAN):';
+SELECT SKU, NamaProduk, Stok FROM Produk;
